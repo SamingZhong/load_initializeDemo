@@ -67,8 +67,9 @@
 		330B7DB41C9AAE80001C2A19 /* load_initializeDemo */ = {
 			isa = PBXGroup;
 			children = (
-				330B7DC51C9AB238001C2A19 /* load_initialize */,
+				330B7DC61C9AB25E001C2A19 /* readMe */,
 				330B7DB51C9AAE80001C2A19 /* main.m */,
+				330B7DC51C9AB238001C2A19 /* load_initialize */,
 			);
 			path = load_initializeDemo;
 			sourceTree = "<group>";
@@ -82,7 +83,6 @@
 				330B7DC01C9AAEF4001C2A19 /* Children.m */,
 				330B7DC21C9AAFEB001C2A19 /* Other.h */,
 				330B7DC31C9AAFEB001C2A19 /* Other.m */,
-				330B7DC61C9AB25E001C2A19 /* readMe */,
 			);
 			name = load_initialize;
 			sourceTree = "<group>";
@@ -265,6 +265,7 @@
 				330B7DBB1C9AAE80001C2A19 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
