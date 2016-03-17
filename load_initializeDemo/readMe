@@ -4,8 +4,7 @@
 共同点：两个方法【都只会被调用一次】。
 
 
-
-
+==============分割线=============
 + (void)load 方法（【加载类】时调用）
 
 查看compile source列表类的排放顺序 -》 按顺序且优先调用父类load方法 =》main方法
@@ -16,8 +15,39 @@
 
 一般来说，除了Method Swizzle，别的逻辑都不应该放在load方法中实现。
 
+
+
+==============分割线=============
 + (void)initialize 方法（【使用类】时调用）
 在第一次用到此类时（比如实例化一个对象），那么这个方法才会被调用，此为惰性调用。
+
+initialize方法主要用来对一些不方便在编译期初始化的对象进行赋值。比如NSMutableArray这种类型的实例化依赖于runtime的消息发送，所以显然无法在编译器初始化：
+// In Parent.m
+static int someNumber = 0;     // int类型可以在编译期赋值
+static NSMutableArray *someObjects;
+
++ (void)initialize {
+if (self == [Parent class]) {
+// 不方便编译期复制的对象在这里赋值
+someObjects = [[NSMutableArray alloc] init];
+}
+}
+
+
+文／bestswifter（简书作者）
+原文链接：http://www.jianshu.com/p/d25f691f0b07
+著作权归作者所有，转载请联系作者获得授权，并标注“简书作者”。
+
+总结
+
+
+load和initialize方法都会在实例化对象之前调用，以main函数为分水岭，前者在main函数之前调用，后者在之后调用。这两个方法会被自动调用，不能手动调用它们。
+
+load和initialize方法都不用显示的调用父类的方法而是自动调用，即使子类没有initialize方法也会调用父类的方法，而load方法则不会调用父类。
+
+load方法通常用来进行Method Swizzle，initialize方法一般用于初始化全局变量或静态变量。
+
+load和initialize方法内部使用了锁，因此它们是线程安全的。实现时要尽可能保持简单，避免阻塞线程，不要再使用锁。
 
 
 

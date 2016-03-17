@@ -20,14 +20,14 @@
     method_exchangeImplementations(originFunc, swizzledFunc);
 }
 
-/*+ (void)initialize{
++ (void)initialize{
     if(self == [Children self]){
         NSLog(@"initializing Children class object(%p)...", self);
     }
     else{
         NSLog(@"no need initializing Children class.");
     }
-}*/
+}
 
 + (void)aClassMethod{
     NSLog(@"Children的类对象=%p，跟本类+initialize方法里的对象相同！", self);

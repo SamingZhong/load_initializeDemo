@@ -14,10 +14,10 @@
 }
 
 + (void)initialize{
+    //加上判断后，就不会因为子类而调用到自己的initialize方法了。
     if(self == [Parent self]){
         NSLog(@"initializing Parent class object(%p)...,caller:%@(%p)", [Parent self], self,self);
     }
-    //self（调用者）为子类时，无需做父类的初始化了
     else{
         NSLog(@"no need initializing Parent class.");
     }
